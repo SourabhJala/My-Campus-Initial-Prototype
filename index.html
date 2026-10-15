@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MyCampus</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%238E162C'/%3E%3Cpath d='M8 23L16 9L24 23' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M11 18H21' stroke='white' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <div id="app-layout">
+    <!-- ======================================================================
+         Left Navigation Sidebar
+         ====================================================================== -->
+    <aside class="sidebar">
+      <div class="sidebar-top">
+        <!-- Logo & Wordmark -->
+        <div class="sidebar-brand" id="brand-home-btn" title="MyCampus Home">
+          <div class="brand-icon-box">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M4 19L12 5L20 19" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M7 14H17" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <span class="brand-title">MyCampus</span>
+        </div>
+
+        <!-- Navigation Menu -->
+        <nav class="sidebar-nav">
+          <a class="nav-item" id="nav-home" data-tab="home">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+            <span>Home</span>
+          </a>
+          <a class="nav-item" id="nav-events" data-tab="events">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+            <span>My Events</span>
+          </a>
+          <a class="nav-item active" id="nav-timelines" data-tab="timelines">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
+            <span>Timelines</span>
+          </a>
+        </nav>
+
+        <!-- Sidebar Team Sync Widget -->
+        <div class="sidebar-team-widget">
+          <div class="sidebar-team-label">
+            <span>TEAM CODE</span>
+            <span id="sync-dot-badge" style="width: 8px; height: 8px; border-radius: 50%; background: #10B981; display: inline-block;" title="Live Sync Active"></span>
+          </div>
+          <div class="sidebar-team-val">
+            <span id="sidebar-team-code">AVATAR</span>
+            <button id="btn-copy-code" class="btn btn-secondary btn-sm" title="Copy Team Code" style="padding: 2px 6px;">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+            </button>
+          </div>
+          <div class="sidebar-team-actions">
+            <button id="btn-switch-team" class="btn btn-secondary btn-sm" style="flex:1; font-size:0.75rem;">Switch Team</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom: Theme Toggle Switch -->
+      <div class="sidebar-bottom">
+        <div class="theme-toggle-row">
+          <div class="theme-label-group">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+            <span>Theme (Dark/Light)</span>
+          </div>
+          <label class="switch">
+            <input type="checkbox" id="theme-toggle-switch">
+            <span class="slider"></span>
+          </label>
+        </div>
+      </div>
+    </aside>
+
+    <!-- ======================================================================
+         Main Content Area
+         ====================================================================== -->
+    <main class="main-content">
+      <!-- Top Bar: Search & User Profile -->
+      <header class="top-bar">
+        <button class="top-bar-search" id="btn-top-search" title="Search events">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        </button>
+        <div class="user-avatar-badge" id="user-profile-badge" title="Team Avatars Profile">UN</div>
+      </header>
+
+      <div class="page-container">
+        <!-- Main Heading Row -->
+        <div class="header-row">
+          <h1 class="page-title" id="page-title-text">My Event Timelines</h1>
+          <button class="btn btn-burgundy" id="btn-open-add-event">
+            Add Event
+          </button>
+        </div>
+
+        <!-- Magic Add Input Bar (matching screenshot exactly) -->
+        <section class="magic-add-bar">
+          <span class="magic-add-label">Magic Add</span>
+          <div class="magic-add-input-wrapper">
+            <input 
+              type="text" 
+              id="magic-add-quick-input" 
+              class="magic-add-input" 
+              placeholder="Paste event text or drag poster screenshot." 
+              autocomplete="off"
+            />
+          </div>
+          <button class="btn btn-burgundy" id="btn-analyze-quick">
+            Analyze
+          </button>
+        </section>
+
+        <!-- Search Bar (Toggled when search icon clicked) -->
+        <div id="inline-search-container" style="display: none; margin-bottom: 20px;">
+          <input type="text" id="event-search-input" class="form-input" placeholder="Search events by title, type, venue or deadline...">
+        </div>
+
+        <!-- Event Cards List with Horizontal Milestone Tracks -->
+        <section class="events-list" id="events-list-container">
+          <!-- Dynamically populated from state.events -->
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <!-- ======================================================================
+       Modal: Add & Magic Extract Event
+       ====================================================================== -->
+  <div class="modal-backdrop" id="modal-event-editor">
+    <div class="modal-box">
+      <div class="modal-head">
+        <h3 id="modal-editor-title">Add & Parse Campus Event</h3>
+        <button class="btn btn-secondary btn-sm" id="btn-close-editor-modal" style="border:none; font-size:1.2rem; cursor:pointer;">&times;</button>
+      </div>
+
+      <div class="modal-body">
+        <!-- Sample chips for instant demonstration -->
+        <div class="sample-chip-row">
+          <span style="font-size:0.75rem; font-weight:700; color:var(--text-muted);">TRY SAMPLE:</span>
+          <span class="sample-chip" data-sample="hackathon">InnovateX Hackathon</span>
+          <span class="sample-chip" data-sample="workshop">Web3 Deep Dive Workshop</span>
+          <span class="sample-chip" data-sample="conf">Campus P2P Tech Conf</span>
+        </div>
+
+        <div class="form-group">
+          <label for="raw-event-textarea">Unstructured Event Text (WhatsApp / Poster / Notice)</label>
+          <textarea id="raw-event-textarea" class="form-textarea" rows="4" placeholder="Paste event WhatsApp message, poster transcript, or website notice here..."></textarea>
+        </div>
+
+        <div style="display: flex; justify-content: flex-end;">
+          <button class="btn btn-burgundy btn-sm" id="btn-run-extraction">
+            Extract with AI / Parser
+          </button>
+        </div>
+
+        <!-- Structured Details Form -->
+        <div id="extracted-fields-box" style="display: flex; flex-direction: column; gap: 14px; margin-top: 10px; border-top: 1px dashed var(--sidebar-border); padding-top: 14px;">
+          <div class="form-group">
+            <label for="input-event-title">Event Title</label>
+            <input type="text" id="input-event-title" class="form-input" placeholder="e.g. InnovateX Hackathon">
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+            <div class="form-group">
+              <label for="input-event-type">Event Type</label>
+              <select id="input-event-type" class="form-select">
+                <option value="Hackathon">Hackathon</option>
+                <option value="Workshop">Workshop</option>
+                <option value="Conference">Conference</option>
+                <option value="Symposium">Symposium</option>
+                <option value="Competition">Competition</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="input-event-team">Team Name / Members</label>
+              <input type="text" id="input-event-team" class="form-input" placeholder="e.g. Avatars (3)">
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+            <div class="form-group">
+              <label for="input-event-venue">Venue</label>
+              <input type="text" id="input-event-venue" class="form-input" placeholder="e.g. Campus Auditorium / Lab 3">
+            </div>
+            <div class="form-group">
+              <label for="input-event-url">Registration Link</label>
+              <input type="text" id="input-event-url" class="form-input" placeholder="https://...">
+            </div>
+          </div>
+
+          <!-- Milestone Stages Configuration -->
+          <div class="form-group">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
+              <label>Milestone Stages (e.g. Reg &rarr; Idea &rarr; Sub)</label>
+              <button type="button" class="btn btn-secondary btn-sm" id="btn-add-milestone-stage" style="padding: 2px 8px; font-size: 0.725rem;">+ Add Stage</button>
+            </div>
+            <div id="milestone-stages-list" style="display: flex; flex-direction: column; gap: 6px;">
+              <!-- Dynamic milestone inputs -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-foot">
+        <button class="btn btn-secondary" id="btn-cancel-editor-modal">Cancel</button>
+        <button class="btn btn-burgundy" id="btn-save-event-card">Save Event Timeline</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================================
+       Modal: Team Access & Live Join
+       ====================================================================== -->
+  <div class="modal-backdrop" id="modal-team-setup">
+    <div class="modal-box" style="max-width: 480px;">
+      <div class="modal-head">
+        <h3>Team Collaboration</h3>
+        <button class="btn btn-secondary btn-sm" id="btn-close-team-modal" style="border:none; font-size:1.2rem; cursor:pointer;">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.5;">
+          Collaborate with your teammates on a shared event roadmap. Enter a 6-character team code to join, or generate a new code.
+        </p>
+
+        <div class="form-group">
+          <label for="input-team-code-modal">6-Character Team Join Code</label>
+          <input type="text" id="input-team-code-modal" class="form-input" maxlength="6" style="font-family: var(--font-mono); font-size: 1.2rem; text-transform: uppercase; text-align: center; letter-spacing: 0.15em; font-weight: 700; color: var(--brand-primary);" placeholder="AVATAR">
+        </div>
+
+        <div style="display: flex; gap: 10px;">
+          <button class="btn btn-secondary" id="btn-gen-new-team" style="flex:1;">Generate New</button>
+          <button class="btn btn-burgundy" id="btn-confirm-team" style="flex:1;">Join Team</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Shelf -->
+  <div id="toast-shelf"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>

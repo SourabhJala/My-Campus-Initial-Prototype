@@ -1,0 +1,27 @@
+{
+  "name": "mycampus-event-journey",
+  "version": "1.0.0",
+  "description": "MyCampus — Your Event Journey: AI-Powered Campus Event Management Web Application for HackShift (PS4)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "test": "node test/smoke-test.js"
+  },
+  "keywords": [
+    "campus",
+    "events",
+    "hackshift",
+    "timeline",
+    "real-time",
+    "collaboration",
+    "ai-parser"
+  ],
+  "author": "HackShift Participant",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "ws": "^8.18.0"
+  }
+}
